@@ -8,6 +8,7 @@
 // Printing in console
 console.log( "Hello world!" );
 
+
 /*
  * Variables
  */
@@ -87,11 +88,151 @@ var students = [
       "foundedAt": 1975
     },
     "active": true
+  },
+  {
+    "firstName": "Gustavo",
+    "lastName": "Arias",
+    "age": 23,
+    "courses": [ "Pathology", "Histology", "Internal Medicine" ],
+    "program": {
+      "name": "Medicine",
+      "foundedAt": 1965
+    },
+    "active": true
   }
 ];
 
+// For this complex object structure (array -> object), you need first access to a specific element in the array  
 console.log( "The firstName of the second student is", students[ 0 ][ "firstName" ] );
 
-//var hello = () => "Hello, Martha";
+// You can also use dot notation for property access
+console.log( "The firstName of the second student is", students[ 0 ].firstName, " (using dot notation)" );
 
-//console.log(hello());
+// You can verify if a property exists in an object
+console.log( "Does the property gender exist for the third element?", students[ 2 ].hasOwnProperty( "gender" ) );
+console.log( "Because does not exist, you can assign a value by default:", students[ 2 ].gender || "No definido" );
+
+console.log( "And the property active?", students[ 2 ].hasOwnProperty( "active" ) );
+
+// For modifing the value of a property
+students[ 0 ][ "active" ] = false;
+console.log( "The first student is not active anymore: ", students[ 0 ][ "active" ] );
+
+//For adding a new property
+students[ 0 ][ "gender" ] = "M";
+console.log( "The gender of the first student is", students[ 0 ][ "gender" ] );
+
+// For deleting a property
+delete students[ 0 ][ "gender" ];
+console.log( "The gender of the first student is", students[ 0 ].hasOwnProperty( "gender" ) );
+
+// It is possible to use some buil-in methods for modifyng arrays
+
+// For adding a new element at the end of the array
+students.push( { "firstName": "Carlos", "lastName": "Mendoza" } );
+console.log( "Students array with a new element at the end", students );
+
+// For deleting the last element
+students.pop();
+console.log( "Students array without the last element", students );
+
+// For deleting the first element
+students.shift();
+console.log( "Students array without the first element", students );
+
+// For adding a new element at the begining of the array
+students.unshift( {
+    "firstName": "Pepito",
+    "lastName": "Perez",
+    "age": 20,
+    "courses": [ "Web development", "Calculous", "Electromagnetism" ],
+    "program": {
+      "name": "Systems Engineer",
+      "foundedAt": 1990
+    },
+    "active": true
+  } );
+console.log( "Students array with a new element at the begining", students );
+
+
+/*
+ * Functions
+ */
+
+// Simple function with return
+function helloWorld() {
+  return "Hello world!";
+}
+
+console.log( helloWorld() );
+
+// Adding parameter
+function helloWorldWithParam( name ) {
+  return `Hello, ${name}!`;
+}
+
+console.log( helloWorldWithParam( "Maria" ) );
+
+// Assigning default value to parameter
+function helloWorldWithDefaultParam( name = "student" ) {
+  return `Hello, ${name}!`;
+}
+
+console.log( helloWorldWithDefaultParam() );
+
+// Another way to define functions using arrow notation
+var helloWorldArrow = ( name = "student" ) => { 
+  return `Hello, ${name}! Using arrow function`
+};
+
+console.log( helloWorldArrow() );
+
+// If the function has only one statement, you can avoid the return and the brackets
+var helloWorldArrowOneLine = ( name = "student" ) => `Hello, ${name}! Using arrow function one line`;
+
+console.log( helloWorldArrowOneLine() );
+
+
+/*
+ * Manipulation of arrays using functions
+ */
+
+// map: Add property with the number of courses by student
+
+// filter: Get the students of the systems engineer program
+
+// find: Get the first student with last name "Lozano"
+
+// reduce: Get the average of the student ages
+
+
+/* 
+ * Control sentences
+ */
+
+// Differences between == and === (!= and !==)
+
+// Conditional (ternary) operator
+
+
+/*
+ * The DOM API
+ */
+
+// Getting an element by Id
+
+// Getting all elements by tag name
+
+// Getting all elements by class name
+
+// Querying elements
+
+// Modifyng the inner HTML
+
+// Adding or modifyng an attribute
+
+// Adding or modifyng a CSS style
+
+// Adding events: click, change, mouseover, mouseout
+// on
+// event listener
