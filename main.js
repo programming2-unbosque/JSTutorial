@@ -198,21 +198,45 @@ console.log( helloWorldArrowOneLine() );
  */
 
 // map: Add property with the number of courses by student
+students = students.map( student => {
+  student[ "course_num" ] = student.courses.length;
+  return student;
+} );
+
+console.log( students );
 
 // filter: Get the students of the systems engineer program
+var studentsSyseng = students.filter( student => student.program.name === "Systems Engineer" );
+console.log( studentsSyseng );
 
 // find: Get the first student with last name "Lozano"
+var studentLozano = students.find( student => student.lastName === "Lozano" );
+console.log( studentLozano );
 
 // reduce: Get the average of the student ages
-
+var studentsAgeAvg = students.map( student => student.age ).reduce( ( a1, a2 ) => a1 + a2 ) / students.length;
+console.log( studentsAgeAvg );
 
 /* 
  * Control sentences
  */
 
 // Differences between == and === (!= and !==)
+console.log( 1 == "1" );
+console.log( 1 === "1" );
 
 // Conditional (ternary) operator
+var courseIsFull;
+if ( students.length === 4 ) {
+  courseIsFull = "Course is full";
+} else {
+  courseIsFull = "Available places";
+}
+
+var courseIsFullOneLine = ( students.length === 4 ) ? "Course is full" : "Available places";
+
+console.log( courseIsFull );
+console.log( courseIsFullOneLine );
 
 
 /*
@@ -220,19 +244,65 @@ console.log( helloWorldArrowOneLine() );
  */
 
 // Getting an element by Id
-
-// Getting all elements by tag name
-
-// Getting all elements by class name
-
-// Querying elements
-
-// Modifyng the inner HTML
+var html5Logo = document.getElementById( "html5-logo" );
+console.log( html5Logo );
 
 // Adding or modifyng an attribute
+html5Logo.width = "100";
+
+// Modifyng the inner HTML
+var paragraph1 = document.getElementById( "paragraph-1" );
+paragraph1.innerHTML = "This paragraph was modified using the DOM API!";
 
 // Adding or modifyng a CSS style
+paragraph1.style[ "font-size" ] = "30";
 
-// Adding events: click, change, mouseover, mouseout
-// on
-// event listener
+// Getting all elements by tag name
+var paragraphs = document.getElementsByTagName( "p" );
+console.log( paragraphs );
+
+// Adding a class to a multiple elements in array
+for ( var i = 0; i < paragraphs.length; i++ ) {
+  paragraphs[ i ].className = "paragraph";
+}
+
+// Getting all elements by class name
+var paragraphs = document.getElementsByClassName( "paragraph" );
+console.log( paragraphs );
+
+// Adding a click event. Other options are: change, mouseover, mouseout, ...
+paragraphs[ 0 ].onclick = function() {
+  console.log( this );
+};
+
+// Creating a new paragraph
+function addElement () {
+
+  // Creating a new p element
+  var newParagraph = document.createElement( "p" );
+  newParagraph.id = "paragraph-4";
+
+  // And creating its content
+  var newContent = document.createTextNode( "This is a new paragraph!!!" );
+
+  // Adding the text node to the newly created p
+  newParagraph.appendChild( newContent );
+
+  // Adding the newly created element and its content into the DOM
+  document.body.insertBefore( newParagraph, paragraphs[ 2 ].nextSibling );
+}
+
+// Running on page load
+//document.body.onload = addElement;
+
+// Querying elements
+//var paragraphsWithClass = document.querySelectorAll( "p.paragraph" );
+//console.log( paragraphsWithClass );
+
+//paragraphsWithClass[ 1 ].addEventListener( "mouseover", function() {
+//  alert( this );
+//} );
+
+//paragraphsWithClass[ 1 ].addEventListener( "mouseover", function() {
+//  console.log( this );
+//} );
