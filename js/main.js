@@ -276,7 +276,7 @@ paragraphs[ 0 ].onclick = function() {
 };
 
 // Creating a new paragraph
-function addElement () {
+function addElement() {
 
   // Creating a new p element
   var newParagraph = document.createElement( "p" );
@@ -293,16 +293,16 @@ function addElement () {
 }
 
 // Running on page load
-//document.body.onload = addElement;
+document.body.onload = addElement;
 
 // Querying elements
-//var paragraphsWithClass = document.querySelectorAll( "p.paragraph" );
-//console.log( paragraphsWithClass );
+var paragraphsWithClass = document.querySelectorAll( "p.paragraph" );
+console.log( paragraphsWithClass );
 
-//paragraphsWithClass[ 1 ].addEventListener( "mouseover", function() {
-//  alert( this );
-//} );
+paragraphsWithClass[ 1 ].addEventListener( "mouseover", function() {
+  console.log( this );
+} );
 
-//paragraphsWithClass[ 1 ].addEventListener( "mouseover", function() {
-//  console.log( this );
-//} );
+paragraphsWithClass[ 1 ].addEventListener( "mouseover", function() {
+  console.log( "Mouseover event" );
+} );
